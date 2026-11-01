@@ -1864,6 +1864,74 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
 .lt-add input.gi{flex:0 0 92px}
 .lt-in-name{width:100%;box-sizing:border-box;font-size:14px}
 @media (prefers-reduced-motion:reduce){.lt-in{transition:none}}
+
+/* ===== 通话小窗：圆形 + 显示时间 ===== */
+.call-mini{width:80px;height:80px;padding:0;gap:0;border-radius:50%;display:block;overflow:visible;border:2px solid var(--line);background:var(--panel);box-shadow:0 10px 28px rgba(0,0,0,.38)}
+.call-mini.drag{box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.cm-av{position:absolute;inset:0;border-radius:50%;overflow:hidden;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;pointer-events:none}
+.cm-av::after{content:"";position:absolute;inset:0;background:rgba(10,10,20,.5)}
+.cm-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:1;pointer-events:none}
+.call-mini .cm-hang{position:absolute;right:-5px;bottom:-5px;width:28px;height:28px;border:2px solid var(--panel);z-index:2}
+.call-mini .cm-hang svg{width:13px;height:13px}
+.lt-topline{font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+
+/* ===== 字卡库（精简版） ===== */
+#win-cards .card-tools{margin:0 0 10px}
+#win-cards .card-tools input{flex:1;min-width:0}
+.grp-card{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:0 0 10px;padding:13px 15px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent-soft),var(--panel));color:var(--text);font-family:inherit;cursor:pointer;text-align:left;transition:transform .15s var(--ease-out),filter .2s}
+.grp-card:active{transform:scale(.985)}
+.grp-card .gc-dot{width:12px;height:12px;border-radius:50%;flex:0 0 auto;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.grp-card .gc-name{font-size:16px;font-weight:700;letter-spacing:.04em}
+.grp-card .gc-n{font-size:12.5px;color:var(--muted)}
+.grp-card .gc-go{margin-left:auto;font-size:12.5px;color:var(--accent)}
+#win-cards .card-item{padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s ease}
+#win-cards .card-item:active{transform:scale(.99)}
+#win-cards .card-item .card-meta{margin-top:6px;font-size:11.5px;color:var(--muted)}
+.cards-foot{flex:0 0 auto;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--panel);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.cards-foot textarea{width:100%;box-sizing:border-box;resize:none;min-height:46px;max-height:140px;border-radius:14px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);padding:10px 12px;font-family:inherit;font-size:14.5px;line-height:1.5}
+.cards-foot .add-row{display:flex;gap:10px;margin:0}
+.cards-foot select{flex:1;min-width:0}
+.cards-foot .primary-btn{flex:0 0 auto;min-width:92px}
+.gh-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gh-tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;min-height:92px;padding:14px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(145deg,hsla(var(--h),70%,62%,.28),hsla(var(--h),70%,50%,.10));color:var(--text);font-family:inherit;text-align:left;cursor:pointer;transition:transform .15s var(--ease-out),border-color .2s}
+.gh-tile:active{transform:scale(.97)}
+.gh-tile.on{border-color:hsl(var(--h),75%,66%);box-shadow:0 8px 22px -12px hsl(var(--h),75%,55%)}
+.gh-tile b{font-size:17px;font-weight:800;letter-spacing:.04em;word-break:break-all}
+.gh-tile span{font-size:12.5px;color:var(--muted)}
+.gh-tile.add{border:1.5px dashed var(--line);background:transparent;align-items:center;justify-content:center;color:var(--accent)}
+.gh-foot{margin-top:14px;display:flex;justify-content:center}
+.ca-text{font-size:14.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin:0 0 12px;padding:12px;border-radius:14px;background:var(--input-bg);border:1px solid var(--line);max-height:30vh;overflow:auto}
+.ca-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ca-btns .lt-btn{padding:11px 0;text-align:center;font-size:14px}
+.mr-list{display:flex;flex-direction:column;gap:8px}
+.mr-list .mr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);font-family:inherit;font-size:15px;cursor:pointer;text-align:left}
+.mr-list .mr small{color:var(--muted);font-size:12px}
+
+/* ===== 小游戏：聊天页小窗 / 邀请弹窗 ===== */
+.gbox{position:absolute;z-index:2800;left:50%;bottom:92px;transform:translateX(-50%);width:min(380px,calc(100% - 16px));max-height:calc(100% - 150px);display:flex;flex-direction:column;border-radius:20px;background:var(--panel);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5);overflow:hidden;animation:gbIn .3s var(--ease-out)}
+@keyframes gbIn{from{opacity:0;transform:translateX(-50%) translateY(14px) scale(.97)}to{opacity:1;transform:translateX(-50%)}}
+.gb-head{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;border-bottom:1px solid var(--line);font-size:14px}
+.gb-head b{flex:1;letter-spacing:.06em}
+.gb-x{border:0;background:rgba(255,255,255,.12);color:var(--text);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px}
+.gb-body{overflow-y:auto;padding:8px;-webkit-overflow-scrolling:touch}
+.gbox .g-table{margin:0}
+.g-pop{position:absolute;inset:0;z-index:3900;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.52);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);animation:gbFade .2s ease}
+@keyframes gbFade{from{opacity:0}to{opacity:1}}
+.g-pop-card{width:min(300px,calc(100% - 48px));padding:22px 20px 18px;border-radius:24px;background:var(--panel);border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.55);text-align:center;animation:gbPop .32s var(--ease-out)}
+@keyframes gbPop{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:none}}
+.g-pop-ic{font-size:44px;line-height:1;margin-bottom:10px}
+.g-pop-t{font-size:16px;font-weight:700;line-height:1.5}
+.g-pop-s{font-size:13px;color:var(--muted);margin:6px 0 16px}
+.g-pop-b{display:flex;gap:10px}
+.g-pop-b button{flex:1}
+.gp-list{display:flex;flex-direction:column;gap:10px}
+.gp-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent-soft),var(--input-bg));color:var(--text);font-family:inherit;text-align:left;cursor:pointer;transition:transform .15s var(--ease-out)}
+.gp-item:active{transform:scale(.98)}
+.gp-ic{font-size:30px;line-height:1}
+.gp-tx{display:flex;flex-direction:column;gap:3px}
+.gp-tx b{font-size:16px}
+.gp-tx small{font-size:12px;color:var(--muted);line-height:1.4}
+.pat-cfg{margin-top:14px;padding-top:6px;border-top:1px solid var(--line)}
 </style>
 </head>
 <body data-theme="night">
@@ -1874,7 +1942,7 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
   <!-- ================= 聊天 ================= -->
   <section class="view view-chat active" id="view-chat" aria-label="聊天">
     <header class="chat-head">
-      <div class="peer" id="chatPeer" title="点这里去设置">
+      <div class="peer" id="chatPeer">
         <div class="pair-avatars" id="pairAvatars"></div>
         <div class="peer-meta">
           <div class="peer-name" id="headName">梦角</div>
@@ -2093,9 +2161,9 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg>
           <span>便利店</span>
         </button>
-        <button class="menu-tile" data-open="win-games">
+        <button class="menu-tile" data-act="games">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r=".8" fill="currentColor"/><circle cx="15" cy="9" r=".8" fill="currentColor"/><circle cx="12" cy="12" r=".8" fill="currentColor"/><circle cx="9" cy="15" r=".8" fill="currentColor"/><circle cx="15" cy="15" r=".8" fill="currentColor"/></svg>
-          <span>今天谁是赌神</span>
+          <span>小游戏</span>
         </button>
         <button class="menu-tile" data-open="win-lots">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="11" height="15" rx="2.2"/><path d="M8 6V5a2 2 0 0 1 2-2h8.5a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H17"/><path d="m9 11.2.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2L6.1 13.3l2-.3z"/></svg>
@@ -2255,26 +2323,25 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
   <div class="win" id="win-games" hidden>
     <header class="win-head">
       <button class="win-back" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-      <h2>今天谁是赌神</h2>
+      <h2>小游戏设置</h2>
     </header>
     <div class="win-body">
-      <div class="g-seg" id="gSeg"></div>
-      <div class="g-table" id="gTable"></div>
       <section class="panel">
-        <h3>节奏设置（秒）</h3>
-        <div class="sh-line"><span>TA 同意邀请需要</span><span class="g-cfg"><input type="number" id="gAccMin" min="0" max="120"> ~ <input type="number" id="gAccMax" min="0" max="120"></span></div>
+        <h3>回应与节奏</h3>
+        <div class="sh-line"><span>TA 回应我的邀请要等（秒）</span><span class="g-cfg"><input type="number" id="gAccMin" min="0" max="120"> ~ <input type="number" id="gAccMax" min="0" max="120"></span></div>
+        <div class="sh-line"><span>TA 同意邀请的概率</span><span class="g-cfg"><input type="number" id="gAccP" min="0" max="100"> %</span></div>
         <div class="sh-line"><span>输的人说话的等待时间</span><span class="g-cfg"><input type="number" id="gSpeak" min="3" max="120"></span></div>
         <div class="sh-line"><span>说完后多久开始下一轮</span><span class="g-cfg"><input type="number" id="gNext" min="2" max="120"></span></div>
-        <p class="note">邀请后 TA 会在「最短 ~ 最长」秒数之间同意，然后进入牌桌。认输的话只显示在牌桌里，不会发到聊天。</p>
+        <p class="note">你在「小游戏」里发出邀请后，聊天里会出现邀请卡；TA 会在「最短 ~ 最长」秒之间回应，按「同意概率」决定同意或婉拒。同意后聊天页会弹出一个小窗开玩。认输的话只显示在小窗里，不会发到聊天。</p>
       </section>
       <section class="panel">
         <h3>TA 的邀请</h3>
         <div class="sh-line"><span>TA 每小时邀请我玩的概率</span><span class="rug-val"><input type="range" id="taGameP" min="0" max="100" step="1"><b id="taGamePV"></b></span></div>
-        <p class="note">页面开着时，TA 会按这个概率在聊天里邀请你来一局「今天谁是赌神」，你可以接受或婉拒。0 表示从不邀请。</p>
+        <p class="note">页面开着时，TA 会按这个概率邀请你玩一局（赌神或石头剪刀布，随机），聊天里会弹出邀请窗口，你可以同意或不同意。0 表示从不邀请。</p>
       </section>
       <section class="panel">
         <h3>输了要说的话（恭维话库）</h3>
-        <p class="note">输的一方要对赢的一方说一句好话，才能继续下一轮。两个库互相独立：「他说的」是 TA 输了时对你说的，「我说的」是你输了时对 TA 说的。每行一条，轮到时会随机抽一条发到聊天里，结尾的「……」也可以自己写。</p>
+        <p class="note">输的一方要对赢的一方说一句好话，才能继续下一轮。两个库互相独立：「他说的」是 TA 输了时对你说的，「我说的」是你输了时对 TA 说的。每行一条，轮到时会随机抽一条显示在小游戏窗口里，结尾的「……」也可以自己写。</p>
         <div class="g-lib-title">他说的（TA 输了）</div>
         <textarea class="css-code-ta" id="praiseTa" spellcheck="false" style="min-height:130px"></textarea>
         <div class="g-lib-title" style="margin-top:12px">我说的（我输了）</div>
@@ -2427,7 +2494,7 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
         </button>
         <button class="menu-row" data-open="win-games">
           <span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r=".8" fill="currentColor"/><circle cx="15" cy="9" r=".8" fill="currentColor"/><circle cx="12" cy="12" r=".8" fill="currentColor"/><circle cx="9" cy="15" r=".8" fill="currentColor"/><circle cx="15" cy="15" r=".8" fill="currentColor"/></svg></span>
-          <span class="mt"><b>今天谁是赌神</b><small>纸牌比大小、石头剪刀布与恭维话库</small></span>
+          <span class="mt"><b>小游戏设置</b><small>回应速度、同意概率、恭维话库（赌神 / 石头剪刀布）</small></span>
           <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="menu-sec">外观</div>
@@ -2496,29 +2563,16 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
       <button class="win-back" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
       <h2>字卡库</h2>
       <div class="head-btns">
-        <button class="ghost-btn" id="btnNewGroup">＋ 分组</button>
-        <button class="ghost-btn" id="btnImportCards">批量导入</button>
-        <button class="ghost-btn" id="btnCardMulti">多选</button>
+        <button class="ghost-btn" id="btnNewGroup" type="button">分组</button>
+        <button class="ghost-btn" id="btnCardMulti" type="button">多选</button>
+        <button class="ghost-btn" id="btnCardMore" type="button">更多</button>
       </div>
     </header>
     <div class="win-body">
-      <div class="add-box">
-        <textarea id="cardText" placeholder="写一句想听 TA 对你说的话…比如：我在想你。"></textarea>
-        <div class="add-row">
-          <select id="cardGroup" aria-label="选择分组"></select>
-          <button class="primary-btn" id="btnAddCard">添加字卡</button>
-        </div>
-        <div class="add-row" style="margin-top:8px">
-          <button class="ghost-btn" id="btnGroups" style="flex:1">分组管理（改名 / 删除 / 归组）</button>
-        </div>
-      </div>
       <div class="card-tools">
         <input type="search" id="cardSearch" placeholder="搜索字卡内容…" autocomplete="off">
-        <button class="mini" id="btnCardDedupe" type="button">去重</button>
-        <button class="mini" id="btnCardAuto" type="button">智能分类</button>
-        <button class="mini" id="btnCardExport" type="button">导出</button>
       </div>
-      <div class="chips" id="chips"></div>
+      <button type="button" class="grp-card" id="grpCard"></button>
       <div class="list-meta" id="cardsMeta">共 0 张字卡</div>
       <div class="card-batch" id="cardBatchBar" hidden>
         <span class="cb-info" id="cbInfo">已选 0 张</span>
@@ -2531,6 +2585,16 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
         <button class="mini" id="btnBatchDone" type="button">完成</button>
       </div>
       <div class="card-list" id="cardList"></div>
+    </div>
+    <div class="cards-foot">
+      <textarea id="cardText" rows="2" placeholder="一行一句，换行自动分成多张字卡"></textarea>
+      <div class="add-row">
+        <select id="cardGroup" aria-label="添加到哪个分组"></select>
+        <button class="primary-btn" id="btnAddCard" type="button">添加</button>
+      </div>
+    </div>
+    <div hidden>
+      <button id="btnImportCards" type="button"></button><button id="btnCardDedupe" type="button"></button><button id="btnCardAuto" type="button"></button><button id="btnCardExport" type="button"></button><button id="btnGroups" type="button"></button>
     </div>
   </div>
 
@@ -3046,13 +3110,10 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
 
   <!-- ================= 弹层 & 提示 ================= -->
   <div class="call-mini" id="callMini" hidden>
-    <div class="cm-info">
-      <span class="cm-name" id="cmName">梦角</span>
-      <span class="cm-status" id="cmStatus">通话中 00:00</span>
-    </div>
-    <button class="cm-btn cm-expand" id="cmExpand" aria-label="恢复通话">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-    </button>
+    <div class="cm-av" id="cmAvatar"></div>
+    <span class="cm-status" id="cmStatus">00:00</span>
+    <span class="cm-name" id="cmName" hidden>梦角</span>
+    <button class="cm-btn cm-expand" id="cmExpand" type="button" hidden aria-label="恢复通话"></button>
     <button class="cm-btn cm-hang" id="cmHang" aria-label="挂断">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(135deg)"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h2a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 8.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
     </button>
@@ -3175,7 +3236,7 @@ function defaults(){
       moments:{ replyMin:5, replyMax:20, autoPost:true, postMin:20, postMax:120 },
       bgImage:null, bgDim:0.32, momCover:null, momDim:0.18,
       avatarStyle:{ shape:'round', r:12, scale:1, bOn:false, bColor:'#ffffff', gOn:false, gColor:'#ff9ec4', gSize:10 },
-      taAccept:{ rp:85, gift:85 }, taUrgeP:8, taSurveyP:6, taFoodP:6, taGameP:5,
+      taAccept:{ rp:85, gift:85 }, taUrgeP:8, taSurveyP:6, taFoodP:6, taGameP:5, taPatP:8,
       textColors:{ me:'', ta:'' }, bubblePy:9, bubbleFs:15, callBg:{ mode:'default', preset:'aurora', image:'' },
       font:{ id:'system', custom:'' }
     }
@@ -3387,6 +3448,7 @@ function normalize(raw){
   s.settings.callBg = { mode: ['default', 'preset', 'image'].indexOf(cbg.mode) >= 0 ? cbg.mode : 'default', preset: typeof cbg.preset === 'string' ? cbg.preset : 'aurora', image: (typeof cbg.image === 'string' && cbg.image.slice(0, 5) === 'data:') ? cbg.image : '' };
   s.settings.taUrgeP = clampN(s.settings.taUrgeP, 0, 100, 8); s.settings.taSurveyP = clampN(s.settings.taSurveyP, 0, 100, 6); s.settings.taFoodP = clampN(s.settings.taFoodP, 0, 100, 6);
   s.settings.taGameP = clampN(s.settings.taGameP, 0, 100, 5);
+  s.settings.taPatP = clampN(s.settings.taPatP, 0, 100, 8);
   var tac = s.settings.taAccept || {};
   s.settings.taAccept = { rp: clampN(tac.rp, 0, 100, 85), gift: clampN(tac.gift, 0, 100, 85) };
   s.settings.bubbleFs = clampN(s.settings.bubbleFs, 12, 19, 15);
@@ -3572,7 +3634,7 @@ function rollStatus(){
 function renderIdentity(){
   var ta = state.ta, me = state.me;
   $('#headName').textContent = (me.name || '我') + ' & ' + (ta.name || '梦角');
-  $('#headSub').textContent = liveStatusText || 'TA 的状态 · 点这里去设置';
+  $('#headSub').textContent = liveStatusText || 'TA 的状态';
   var pa = $('#pairAvatars');
   if(pa){
     pa.innerHTML = '';
@@ -3912,7 +3974,7 @@ function onWinOpen(id){
   if(id === 'win-proactive'){ renderTaAccept(); }
   if(id === 'win-reply'){ renderComboExtra(); }
   if(id === 'win-store'){ renderStore(); }
-  if(id === 'win-games'){ renderGame(); renderPraiseLib(); renderGameCfg(); }
+  if(id === 'win-games'){ renderPraiseLib(); renderGameCfg(); }
   if(id === 'win-cinema'){ renderCinemaWin(); }
   if(id === 'win-identity' || id === 'win-settings'){ renderIdentity(); renderMainIntervals(); }
 }
@@ -4874,10 +4936,18 @@ function ensureReplies(){
   var ids = state.unanswered || [];
   if(!ids.length) return 0;
   state.unanswered = [];
-  var t = Date.now() + 600 + randReplyDelay();
+  var nowE = Date.now();
+  var lastMsgE = state.messages.filter(function(x){ return x.id === ids[ids.length - 1]; })[0];
+  var baseE = lastMsgE && lastMsgE.ts ? lastMsgE.ts : nowE;
+  // 回复在「发出消息后 最短~最长」之内到达（含「正在输入」那一小段），而不是等到已读之后再另起一段计时
+  var t = Math.max(nowE + 500, baseE + randReplyDelay() - 2300);
   ids.forEach(function(mid){
     enqueue({ t: 'reply', replyTo: mid, dueAt: t });
-    t += randReplyDelay();
+    var mm = state.messages.filter(function(x){ return x.id === mid; })[0];
+    if(mm && mm.rd && mm.ts + mm.rd > t - 1300){
+      mm.rd = Math.max(500, Math.floor((t - 1300 - mm.ts) * (0.35 + Math.random() * 0.4)));
+    }
+    t += 1500 + Math.random() * 3000;
   });
   save();
   return ids.length;
@@ -5540,32 +5610,80 @@ function groupName(gid){
   return g ? g.name : '未分组';
 }
 function renderChips(){
-  var wrap = $('#chips');
-  wrap.innerHTML = '';
   var items = [{id:'all', name:'全部'}];
   state.groups.forEach(function(g){ items.push({id:g.id, name:g.name}); });
   if(countOf('none') > 0) items.push({id:'none', name:'未分组'});
   if(items.every(function(x){ return x.id !== cardFilter; })) cardFilter = 'all';
-  items.forEach(function(it){
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'chip' + (cardFilter === it.id ? ' on' : '');
-    b.textContent = it.name;
-    var n = document.createElement('span');
-    n.className = 'n';
-    n.textContent = countOf(it.id);
-    b.appendChild(n);
-    b.onclick = function(){
-      cardFilter = it.id;
-      cardPage = 1;
-      renderChips(); renderCardList();
-      var sel = $('#cardGroup');
-      if(sel && it.id !== 'all' && it.id !== 'none') sel.value = it.id;
-    };
+  var cur = items.filter(function(x){ return x.id === cardFilter; })[0];
+  var btn = $('#grpCard'); if(!btn) return;
+  btn.innerHTML = '';
+  var dot = document.createElement('span'); dot.className = 'gc-dot';
+  var nm = document.createElement('span'); nm.className = 'gc-name'; nm.textContent = cur.name;
+  var n = document.createElement('span'); n.className = 'gc-n'; n.textContent = countOf(cur.id) + ' 张';
+  var go = document.createElement('span'); go.className = 'gc-go'; go.textContent = '切换分组 ›';
+  btn.appendChild(dot); btn.appendChild(nm); btn.appendChild(n); btn.appendChild(go);
+  btn.onclick = openGroupHub;
+}
+function setCardFilter(id){
+  cardFilter = id; cardPage = 1;
+  renderChips(); renderCardList();
+  var sel = $('#cardGroup');
+  if(sel && id !== 'all' && id !== 'none') sel.value = id;
+}
+function openGroupHub(){
+  var wrap = document.createElement('div');
+  var grid = document.createElement('div'); grid.className = 'gh-grid';
+  var items = [{id:'all', name:'全部'}];
+  state.groups.forEach(function(g){ items.push({id:g.id, name:g.name}); });
+  if(countOf('none') > 0) items.push({id:'none', name:'未分组'});
+  items.forEach(function(it, i){
+    var b = document.createElement('button'); b.type = 'button';
+    b.className = 'gh-tile' + (cardFilter === it.id ? ' on' : '');
+    b.style.setProperty('--h', String((i * 47 + 250) % 360));
+    var t = document.createElement('b'); t.textContent = it.name;
+    var c = document.createElement('span'); c.textContent = countOf(it.id) + ' 张字卡';
+    b.appendChild(t); b.appendChild(c);
+    b.onclick = function(){ setCardFilter(it.id); closeSheet(); };
+    grid.appendChild(b);
+  });
+  var add = document.createElement('button'); add.type = 'button'; add.className = 'gh-tile add'; add.innerHTML = '<b>＋ 新建分组</b>';
+  add.onclick = function(){ openNewGroup(); };
+  grid.appendChild(add);
+  var foot = document.createElement('div'); foot.className = 'gh-foot';
+  var mg = document.createElement('button'); mg.type = 'button'; mg.className = 'lt-btn'; mg.textContent = '改名 / 删除分组';
+  mg.onclick = function(){ openGroups(); };
+  foot.appendChild(mg);
+  wrap.appendChild(grid); wrap.appendChild(foot);
+  openSheet('选择分组', wrap);
+}
+function openCardsMore(){
+  var wrap = document.createElement('div'); wrap.className = 'mr-list';
+  [['批量导入','粘贴文字或选 TXT','#btnImportCards'],['去重','合并重复的字卡','#btnCardDedupe'],['智能分类','按关键词自动归组','#btnCardAuto'],['导出','下载或复制成文本','#btnCardExport']].forEach(function(r){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'mr';
+    var l = document.createElement('span'); l.textContent = r[0];
+    var sm = document.createElement('small'); sm.textContent = r[1];
+    b.appendChild(l); b.appendChild(sm);
+    b.onclick = function(){ closeSheet(); setTimeout(function(){ $(r[2]).click(); }, 320); };
     wrap.appendChild(b);
   });
+  openSheet('更多', wrap);
 }
-var CARDS_PAGE = 200;
+function openCardActions(c){
+  var wrap = document.createElement('div');
+  var p = document.createElement('div'); p.className = 'ca-text'; p.textContent = c.text; wrap.appendChild(p);
+  var g = document.createElement('div'); g.className = 'ca-btns';
+  function mk(t, cls, fn){ var b = document.createElement('button'); b.type = 'button'; b.className = 'lt-btn' + (cls ? ' ' + cls : ''); b.textContent = t; b.onclick = fn; g.appendChild(b); }
+  mk('编辑', '', function(){ openCardEditor(c.id); });
+  mk('分组：' + groupName(c.groupId), '', function(){ openGroupPicker([c.id]); });
+  mk('删除', 'danger', function(){
+    if(!confirm('删除这张字卡？')) return;
+    state.cards = state.cards.filter(function(x){ return x.id !== c.id; });
+    save(); renderChips(); renderCardList(); renderGroupSelects(); renderIdentity(); closeSheet(); toast('已删除');
+  });
+  wrap.appendChild(g);
+  openSheet('字卡', wrap);
+}
+var CARDS_PAGE = 80;
 var cardPage = 1;
 var cardMulti = false, cardSel = {};
 var cardQuery = '';
@@ -5692,7 +5810,7 @@ function renderCardList(){
     var box = document.createElement('div');
     box.className = 'empty-box';
     box.innerHTML = total === 0
-      ? '还没有字卡。<br>在上面写一句想听 TA 说的话，点「添加字卡」。'
+      ? '还没有字卡。<br>在下面写几句想听 TA 说的话（一行一句），点「添加」。'
       : '这个分组里还没有字卡。';
     list.appendChild(box);
     return;
@@ -5721,38 +5839,11 @@ function renderCardList(){
         renderCardBatchBar();
       };
     }
-    var foot = document.createElement('div');
-    foot.className = 'card-foot';
-    var tag = document.createElement('button');
-    tag.type = 'button';
-    tag.className = 'tag tag-btn';
-    tag.title = '点一下改这张字卡的分组';
-    var tico = document.createElement('span');
-    tico.className = 'tag-ico';
-    tico.textContent = '🏷';
-    tag.appendChild(tico);
-    tag.appendChild(document.createTextNode(groupName(c.groupId)));
-    tag.onclick = function(ev){
-      ev.stopPropagation();
-      openGroupPicker([c.id]);
-    };
-    var sp = document.createElement('span');
-    sp.className = 'spacer';
-    var edit = document.createElement('button');
-    edit.className = 'mini';
-    edit.textContent = '编辑';
-    edit.onclick = function(){ openCardEditor(c.id); };
-    var del = document.createElement('button');
-    del.className = 'mini danger';
-    del.textContent = '删除';
-    del.onclick = function(){
-      if(!confirm('删除这张字卡？')) return;
-      state.cards = state.cards.filter(function(x){ return x.id !== c.id; });
-      save(); renderChips(); renderCardList(); renderGroupSelects(); renderIdentity();
-      toast('已删除');
-    };
-    foot.appendChild(tag); foot.appendChild(sp); foot.appendChild(edit); foot.appendChild(del);
-    item.appendChild(foot);
+    var meta2 = document.createElement('div');
+    meta2.className = 'card-meta';
+    meta2.textContent = groupName(c.groupId);
+    item.appendChild(meta2);
+    if(!cardMulti) item.onclick = function(){ openCardActions(c); };
     list.appendChild(item);
   });
   if(cards.length > CARDS_PAGE * cardPage){
@@ -5809,20 +5900,25 @@ function renderGroupSelects(){
 }
 function addCard(){
   var ta = $('#cardText');
-  var text = stripQuotes(ta.value || '');
-  if(!text){ toast('先写一句想听的话'); ta.focus(); return; }
-  var gid = $('#cardGroup').value;
-  var autoName = null;
-  if(!gid || gid === 'none'){ autoName = classifyCardText(text); if(autoName) gid = groupIdByName(autoName); }
-  state.cards.push({
-    id: uid(), text: text,
-    groupId: (gid && gid !== 'none') ? gid : null,
-    ts: Date.now()
+  var lines = String(ta.value || '').replace(/\r\n?/g, '\n').split('\n').map(function(l){ return stripQuotes(l); }).filter(Boolean);
+  if(!lines.length){ toast('先写一句想听的话（一行一句）'); ta.focus(); return; }
+  var gid0 = $('#cardGroup').value;
+  var seen = {};
+  state.cards.forEach(function(c){ seen[cardKey(c.text)] = 1; });
+  var added = 0, skipped = 0, classified = 0;
+  lines.forEach(function(text){
+    var k = cardKey(text);
+    if(seen[k]){ skipped++; return; }
+    seen[k] = 1;
+    var gid = gid0;
+    if(!gid || gid === 'none'){ var nm = classifyCardText(text); if(nm){ gid = groupIdByName(nm); classified++; } }
+    state.cards.push({ id: uid(), text: text, groupId: (gid && gid !== 'none') ? gid : null, ts: Date.now() + added });
+    added++;
   });
   save();
   ta.value = '';
   renderChips(); renderCardList(); renderGroupSelects(); renderIdentity();
-  toast(autoName ? ('字卡 +1，已归到「' + autoName + '」') : '字卡 +1');
+  toast(added ? ('已添加 ' + added + ' 张' + (classified ? '，其中 ' + classified + ' 张自动归了组' : '') + (skipped ? '，跳过 ' + skipped + ' 张重复' : '')) : ('这 ' + skipped + ' 张都已经有了'));
 }
 
 /* ============ 弹层 ============ */
@@ -6135,7 +6231,10 @@ var call = { active:false, mode:'out', status:'idle', t0:0, timer:null, ringTime
 function setCallStatusText(txt){
   var a = $('#callStatus'), b = $('#cmStatus');
   if(a) a.textContent = txt;
-  if(b) b.textContent = txt;
+  if(b){
+    var tm = String(txt).match(/\d+:\d\d(:\d\d)?/);
+    b.textContent = tm ? tm[0] : (txt.indexOf('呼叫') >= 0 ? '呼叫中' : (txt.indexOf('无应答') >= 0 ? '无应答' : '来电'));
+  }
 }
 function minimizeCall(){
   if(!call.active) return;
@@ -6193,6 +6292,7 @@ function bindCallMiniDrag(){
     dragging = false;
     mini.classList.remove('drag');
     try { mini.releasePointerCapture(e.pointerId); } catch(err){}
+    if(!moved && !(e.target.closest && e.target.closest('.cm-hang'))) expandCall();
   });
 }
 
@@ -6210,6 +6310,7 @@ function startCall(mode){
   $('#callName').textContent = state.ta.name || '梦角';
   $('#cmName').textContent = state.ta.name || '梦角';
   paintAvatar($('#callAvatar'), state.ta);
+  try { paintAvatar($('#cmAvatar'), state.ta); } catch(e){}
   if(mode === 'out'){
     setCallStatusText('正在呼叫…');
     $('#btnAccept').hidden = true;
@@ -7531,7 +7632,7 @@ function fillSurveyCard(card, m){
   }
   var head = document.createElement('div');
   head.className = 'svc-title';
-  head.textContent = (m.type === 'surveyInvite' ? '📋 问卷 · ' : '✅ 填好了 · ') + sv.title;
+  head.textContent = (m.type === 'surveyInvite' ? '📋 问卷 · ' : '✅ ' + rugTaName() + ' 填好了 · ') + sv.title;
   card.appendChild(head);
   if(m.type === 'surveyInvite' && run && qs.length && run.answers.length >= qs.length){
     head.textContent = '✅ ' + rugTaName() + ' 填好了 · ' + sv.title;
@@ -7586,8 +7687,13 @@ function execSurveyAnswer(runId){
   var ans = opts[Math.floor(Math.random() * opts.length)];
   run.answers.push({ qid: q.id, answer: ans });
   var doneAll = run.answers.length >= qs.length;
+  if(doneAll && !state.messages.some(function(x){ return x.type === 'surveyDone' && x.runId === run.id; })){
+    // TA 答完后，把整份答案单独发给你一张卡片
+    state.messages.push({ id: uid(), side: 'ta', type: 'surveyDone', surveyId: sv.id, runId: run.id, ts: Date.now() });
+  }
 
   save(); renderSurveys(); updateSurveyCards(); renderMessages();
+  if(doneAll) setTimeout(scrollBottom, 60);
   toast(doneAll ? 'TA 把「' + sv.title + '」填完了' : 'TA 回答了「' + sv.title + '」第 ' + run.answers.length + ' 题');
 }
 function openSurveyHistory(sid){
@@ -9300,7 +9406,6 @@ function bind(){
     else endCall('cancelled');
   };
   bindCallMiniDrag();
-  $('#chatPeer').onclick = function(){ openWin('win-settings'); };
 
   $('#btnAddCard').onclick = addCard;
   $('#cardSearch').addEventListener('input', function(e){ cardQuery = (e.target.value || '').trim().toLowerCase(); cardPage = 1; renderCardList(); });
@@ -9334,7 +9439,8 @@ function bind(){
   };
 
   $('#btnHelp').onclick = openHelp;
-  $('#btnNewGroup').onclick = openNewGroup;
+  $('#btnNewGroup').onclick = openGroupHub;
+  $('#btnCardMore').onclick = openCardsMore;
   $('#btnImportCards').onclick = openImportCards;
   var bs = $('#btnImportStatuses');
   if(bs) bs.onclick = openImportStatuses;
@@ -9915,6 +10021,10 @@ function openEmoji(tab){
 
 /* ============ 顶部功能收纳 ============ */
 var FT_COLORS = { 'win-tarot': '#a98bff', 'win-survey': '#5ab2ff', 'win-stickers': '#ffb84d', 'win-shop': '#4ad0c4', 'win-rug': '#f5c542', 'win-store': '#5ecb8f', 'win-games': '#ff6f91', 'win-lots': '#f08a5d', 'win-cinema': '#7aa2ff', 'mail': '#ff9f6b', 'win-settings': '#9aa4b8', _: ['#ff6b6b', '#6bd0ff', '#c58bff', '#ffd166', '#5ee0b4', '#ff9bd2'] };
+document.addEventListener('click', function(ev){
+  var t = ev.target.closest && ev.target.closest('[data-act="games"]');
+  if(t){ openGamePicker(); }
+});
 function buildFuncTray(){
   var panel = $('#ftPanel'), handle = $('#ftHandle'), tray = $('#funcTray');
   if(!panel || !handle || !tray) return;
@@ -9924,9 +10034,10 @@ function buildFuncTray(){
     it.type = 'button'; it.className = 'ft-item';
     if(t.getAttribute('data-open')) it.setAttribute('data-open', t.getAttribute('data-open'));
     if(t.getAttribute('data-tab')) it.setAttribute('data-tab', t.getAttribute('data-tab'));
+    if(t.getAttribute('data-act')) it.setAttribute('data-act', t.getAttribute('data-act'));
     it.style.setProperty('--i', i);
     var ic = document.createElement('span'); ic.className = 'ft-ic';
-    var keyc = t.getAttribute('data-open') || t.getAttribute('data-tab') || '';
+    var keyc = t.getAttribute('data-open') || t.getAttribute('data-tab') || (t.getAttribute('data-act') === 'games' ? 'win-games' : '');
     it.style.setProperty('--c', FT_COLORS[keyc] || FT_COLORS._[i % FT_COLORS._.length]);
     var sv = t.querySelector('svg'); if(sv) ic.appendChild(sv.cloneNode(true)); else ic.textContent = '✦';
     var lb = document.createElement('span'); lb.className = 'ft-lb'; lb.textContent = (t.textContent || '').trim();
@@ -10300,14 +10411,14 @@ function rugAsk(by){
 }
 function rugResolve(m, yes, who){
   if(!m.pending) return;
-  if(m.kind === 'game'){
+  if(m.kind === 'game' || m.kind === 'ginv'){
     m.pending = false; m.result = yes ? 'yes' : 'no';
-    save(); refreshMsgNode(m.id);
+    save(); refreshMsgNode(m.id); gClosePop();
+    var gn = G_NAMES[m.mode || 'poker'], wnm = who === 'me' ? '你' : rugTaName();
     if(yes){
-      rugAdd({ side: 'me', kind: 'info', pat: true, text: '你接受了邀请，开局！' });
-      gClear(); G.mode = 'poker'; gSeat();
-      openWin('win-games'); renderGame();
-    } else rugAdd({ side: 'me', kind: 'info', pat: true, text: '你说：下次吧～' });
+      rugAdd({ side: who, kind: 'info', pat: true, text: wnm + ' 同意了，「' + gn + '」开始！' });
+      gStartGame(m.mode || 'poker');
+    } else rugAdd({ side: who, kind: 'info', pat: true, text: wnm + ' 说：这次先不玩啦～' });
     return;
   }
   var r = state.rug;
@@ -10368,7 +10479,7 @@ function rugTick(){
   var list = state.messages.slice();
   list.forEach(function(m){
     if(m.type === 'rug' && m.pending && !m.askMe && now >= (m.due || 0)){
-      rugResolve(m, Math.random() * 100 < (m.kind === 'invite' ? r.taAccept : r.taStand), 'ta');
+      rugResolve(m, Math.random() * 100 < (m.kind === 'invite' ? r.taAccept : (m.kind === 'ginv' ? gcfg().acceptP : r.taStand)), 'ta');
     }
   });
   if(rugPending()) return;
@@ -10567,6 +10678,11 @@ function renderTaAccept(){
 
 /* ============ 拍一拍 ============ */
 var patTab = 'toMe';
+function taPat(){
+  var list = (state.pats && state.pats.toMe) || [];
+  if(!list.length) return;
+  rugAdd({ side: 'ta', kind: 'info', pat: true, text: patText(list[Math.floor(Math.random() * list.length)]) });
+}
 function patText(tpl){ return String(tpl).replace(/\{ta\}/g, rugTaName()).replace(/\{me\}/g, state.me.name || '我'); }
 function openPat(){
   var wrap = document.createElement('div'); wrap.className = 'pat-wrap';
@@ -10590,6 +10706,7 @@ function openPat(){
       go.onclick = function(){
         closeSheet();
         rugAdd({ side: patTab === 'toMe' ? 'ta' : 'me', kind: 'info', pat: true, text: patText(tpl) });
+        if(patTab === 'toTa' && Math.random() < 0.45) setTimeout(taPat, 1800 + Math.random() * 3200);
       };
       var ed = document.createElement('button'); ed.type = 'button'; ed.className = 'pat-ic'; ed.textContent = '✎'; ed.title = '编辑';
       ed.onclick = function(){
@@ -10619,6 +10736,11 @@ function openPat(){
     body.appendChild(rs);
   }
   wrap.appendChild(seg); wrap.appendChild(body);
+  var cfgBox = document.createElement('div'); cfgBox.className = 'pat-cfg';
+  cfgBox.innerHTML = '<div class="sh-line"><span>TA 每小时主动拍我的概率</span><span class="rug-val"><input type="range" id="taPatP" min="0" max="100" step="1"><b id="taPatPV"></b></span></div><p class="note">打开页面期间，TA 会按这个概率从「TA 对我」那组里随机拍你一下；你拍 TA 时，TA 也有机会拍回来。0 表示从不主动拍。</p>';
+  wrap.appendChild(cfgBox);
+  var pr = cfgBox.querySelector('#taPatP'); pr.value = state.settings.taPatP; cfgBox.querySelector('#taPatPV').textContent = state.settings.taPatP + '%';
+  pr.oninput = function(){ state.settings.taPatP = parseInt(pr.value, 10); cfgBox.querySelector('#taPatPV').textContent = pr.value + '%'; save(); };
   draw();
   openSheet('拍一拍', wrap);
 }
@@ -11056,8 +11178,10 @@ function taFeed(){
   updateWalletUI();
 }
 function taInviteGame(){
-  if(state.messages.some(function(m){ return m.type === 'rug' && m.pending; })) return;
-  rugAdd({ side: 'ta', kind: 'game', pending: true, askMe: true, text: rugTaName() + ' 邀请你来一局「今天谁是赌神」🃏' });
+  if(G.open || state.messages.some(function(m){ return m.type === 'rug' && m.pending; })) return;
+  var mode = Math.random() < 0.5 ? 'poker' : 'rps';
+  rugAdd({ side: 'ta', kind: 'game', mode: mode, pending: true, askMe: true, text: rugTaName() + ' 邀请你来一局「' + G_NAMES[mode] + '」' + (mode === 'rps' ? '✊' : '🃏') });
+  gShowPop(state.messages[state.messages.length - 1]);
 }
 function perTick(pp){ var P = (pp || 0) / 100; return P <= 0 ? 0 : (P >= 1 ? 1 : 1 - Math.pow(1 - P, 1 / 1800)); }
 function miscTick(){
@@ -11065,6 +11189,7 @@ function miscTick(){
   if(Math.random() < perTick(st.taUrgeP)){ rugAdd({ side: 'ta', kind: 'info', pat: true, text: rugTaName() + ' 催你写信啦 💌' }); }
   if(Math.random() < perTick(st.taSurveyP)) taInviteSurvey();
   if(Math.random() < perTick(st.taGameP)) taInviteGame();
+  if(Math.random() < perTick(st.taPatP)) taPat();
   var boost = ((h >= 7 && h <= 9) || (h >= 11 && h <= 13) || (h >= 17 && h <= 19) || (h >= 21 && h <= 22)) ? 3 : 1;
   if(Math.random() < perTick(st.taFoodP) * boost) taFeed();
 }
@@ -11095,12 +11220,12 @@ function renderStore(){
 var G_RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], G_SUITS = ['♠', '♥', '♦', '♣'];
 var RPS = [['✊', '石头'], ['✌️', '剪刀'], ['✋', '布']];
 function gcfg(){
-  var d = { acceptMin: 3, acceptMax: 8, speakWait: 6, nextSec: 8 };
+  var d = { acceptMin: 3, acceptMax: 8, speakWait: 6, nextSec: 8, acceptP: 85 };
   try { var o = JSON.parse(localStorage.getItem('mj.gameCfg') || '{}') || {}; Object.keys(d).forEach(function(k){ if(typeof o[k] === 'number' && o[k] >= 0) d[k] = o[k]; }); } catch(e){}
   if(d.acceptMax < d.acceptMin) d.acceptMax = d.acceptMin;
   return d;
 }
-var G = { mode: 'poker', phase: 'lobby', round: 0, dealer: 'me', my: [], ta: [], myUsed: {}, taUsed: {}, myIdx: -1, taIdx: -1, myRps: -1, taRps: -1, score: { me: 0, ta: 0 }, msg: '', loser: null, count: 0, speech: [], spoken: false, endAsk: false, timers: [], iv: null };
+var G = { open: false, mode: 'poker', phase: 'idle', round: 0, dealer: 'me', my: [], ta: [], myUsed: {}, taUsed: {}, myIdx: -1, taIdx: -1, myRps: -1, taRps: -1, score: { me: 0, ta: 0 }, msg: '', loser: null, count: 0, speech: [], spoken: false, endAsk: false, timers: [], iv: null };
 function gClear(){ G.timers.forEach(clearTimeout); G.timers = []; if(G.iv){ clearInterval(G.iv); G.iv = null; } }
 function gAfter(ms, fn){ G.timers.push(setTimeout(fn, ms)); }
 function gCountdown(sec, onTick, onDone){
@@ -11110,21 +11235,76 @@ function gCountdown(sec, onTick, onDone){
 }
 function gShuffle(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
 function gUnused(arr, used){ var r = []; arr.forEach(function(c, i){ if(!used[i]) r.push(i); }); return r; }
-function gInvite(){
-  if(G.phase !== 'lobby') return;
-  var c = gcfg(), sec = Math.max(1, Math.round(c.acceptMin + Math.random() * (c.acceptMax - c.acceptMin)));
-  G.phase = 'inviting'; G.msg = '已邀请 ' + rugTaName() + '，等待 TA 回应…';
-  gCountdown(sec, renderGame, function(){ gSeat(); renderGame(); });
-}
 function gSeat(){
   gClear(); G.phase = 'seated'; G.round = 0; G.score = { me: 0, ta: 0 }; G.my = []; G.ta = []; G.myUsed = {}; G.taUsed = {};
-  G.myIdx = G.taIdx = -1; G.speech = []; G.endAsk = false; G.dealer = Math.random() < 0.5 ? 'me' : 'ta';
-  G.msg = rugTaName() + ' 同意了！双方准备好就可以开局';
+  G.myIdx = G.taIdx = -1; G.speech = []; G.endAsk = false; G.dealer = Math.random() < 0.5 ? 'me' : 'ta'; G.msg = '';
 }
-function gReady(){
-  if(G.phase !== 'seated') return;
-  G.phase = 'ready'; G.msg = rugTaName() + ' 正在准备…'; renderGame();
-  gAfter(1000 + Math.random() * 1800, function(){ if(G.mode === 'poker') gDealStart(); else gBeginChoose(); });
+function gStartGame(mode){
+  G.mode = mode; G.open = true; gSeat(); gEnsureBox(); renderGame();
+  gAfter(700, function(){ if(G.mode === 'poker') gDealStart(); else gBeginChoose(); });
+}
+function gCloseBox(){
+  gClear(); G.open = false; G.phase = 'idle';
+  var b = document.getElementById('gBox'); if(b && b.parentNode) b.parentNode.removeChild(b);
+}
+function gEnsureBox(){
+  var box = document.getElementById('gBox');
+  var title = G.mode === 'poker' ? '今天谁是赌神' : '石头剪刀布';
+  if(box){ box.querySelector('.gb-title').textContent = title; return box; }
+  box = document.createElement('div'); box.className = 'gbox'; box.id = 'gBox';
+  box.innerHTML = '<div class="gb-head"><b class="gb-title"></b><button type="button" class="gb-x" aria-label="关闭">✕</button></div><div class="gb-body"><div class="g-table" id="gTable"></div></div>';
+  box.querySelector('.gb-title').textContent = title;
+  (document.getElementById('app') || document.body).appendChild(box);
+  box.querySelector('.gb-x').onclick = function(){ if(confirm('结束并关闭这局游戏？')) gCloseBox(); };
+  var head = box.querySelector('.gb-head'), sx = 0, sy = 0, ox = 0, oy = 0, drag = false;
+  head.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.gb-x')) return;
+    drag = true; var r = box.getBoundingClientRect(), pr = box.parentElement.getBoundingClientRect();
+    ox = r.left - pr.left; oy = r.top - pr.top; sx = e.clientX; sy = e.clientY;
+    box.style.transform = 'none'; box.style.left = ox + 'px'; box.style.top = oy + 'px'; box.style.bottom = 'auto';
+    try { head.setPointerCapture(e.pointerId); } catch(err){}
+  });
+  head.addEventListener('pointermove', function(e){
+    if(!drag) return; var pr = box.parentElement.getBoundingClientRect();
+    box.style.left = Math.max(4, Math.min(pr.width - box.offsetWidth - 4, ox + e.clientX - sx)) + 'px';
+    box.style.top = Math.max(4, Math.min(pr.height - 60, oy + e.clientY - sy)) + 'px';
+  });
+  head.addEventListener('pointerup', function(){ drag = false; });
+  return box;
+}
+/* 邀请：我邀请 TA（聊天里出现邀请卡，TA 在设定的秒数内回应）*/
+var G_NAMES = { poker: '今天谁是赌神', rps: '石头剪刀布' };
+function gSendInvite(mode){
+  if(G.open){ toast('已经有一局在玩了，先把小窗关掉'); return; }
+  if(rugPending()){ toast('还有一条邀请没处理完'); return; }
+  var c = gcfg(), sec = c.acceptMin + Math.random() * (c.acceptMax - c.acceptMin);
+  if(currentTab !== 'chat') setTab('chat');
+  rugAdd({ side: 'me', kind: 'ginv', mode: mode, pending: true, due: Date.now() + Math.max(1, sec) * 1000,
+    text: '你邀请 ' + rugTaName() + ' 玩「' + G_NAMES[mode] + '」，等待 TA 回应…' });
+}
+function openGamePicker(){
+  var wrap = document.createElement('div'); wrap.className = 'gp-list';
+  [['poker', '🃏', '今天谁是赌神', '每人 6 张牌，各出一张比大小，输的人说一句恭维的话'], ['rps', '✊', '石头剪刀布', '同时出拳，输的人说一句恭维的话']].forEach(function(g){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'gp-item';
+    b.innerHTML = '<span class="gp-ic"></span><span class="gp-tx"><b></b><small></small></span>';
+    b.querySelector('.gp-ic').textContent = g[1]; b.querySelector('b').textContent = g[2]; b.querySelector('small').textContent = g[3];
+    b.onclick = function(){ closeSheet(); setTimeout(function(){ gSendInvite(g[0]); }, 280); };
+    wrap.appendChild(b);
+  });
+  openSheet('邀请 ' + rugTaName() + ' 玩小游戏', wrap);
+}
+/* 邀请：TA 邀请我（聊天里一张邀请卡 + 一个弹窗，可以同意或不同意）*/
+function gClosePop(){ var p = document.getElementById('gPop'); if(p && p.parentNode) p.parentNode.removeChild(p); }
+function gShowPop(m){
+  gClosePop();
+  var d = document.createElement('div'); d.className = 'g-pop'; d.id = 'gPop';
+  d.innerHTML = '<div class="g-pop-card"><div class="g-pop-ic"></div><div class="g-pop-t"></div><div class="g-pop-s">要一起玩一局吗？</div><div class="g-pop-b"><button type="button" class="ghost-btn" data-k="no">不同意</button><button type="button" class="primary-btn" data-k="yes">同意</button></div></div>';
+  d.querySelector('.g-pop-ic').textContent = m.mode === 'rps' ? '✊' : '🃏';
+  d.querySelector('.g-pop-t').textContent = rugTaName() + ' 邀请你玩「' + G_NAMES[m.mode || 'poker'] + '」';
+  d.querySelector('[data-k="yes"]').onclick = function(){ rugResolve(m, true, 'me'); };
+  d.querySelector('[data-k="no"]').onclick = function(){ rugResolve(m, false, 'me'); };
+  (document.getElementById('app') || document.body).appendChild(d);
+  setTimeout(function(){ if(m.pending){ m.pending = false; m.result = 'no'; save(); refreshMsgNode(m.id); gClosePop(); } }, 90000);
 }
 function gDealStart(){
   var deck = [];
@@ -11137,7 +11317,7 @@ function gDealStart(){
 }
 function gBeginChoose(){
   G.round++; G.phase = 'choose'; G.myIdx = G.taIdx = -1; G.myRps = G.taRps = -1; G.speech = []; G.loser = null; G.spoken = false;
-  G.msg = G.mode === 'poker' ? '轮到你选牌：点一张你想出的牌' : '选一个出拳'; renderGame();
+  G.msg = (G.mode === 'poker' ? '点一张你想出的牌' : '选一个出拳') + ' · ' + rugTaName() + ' 正在选…'; renderGame();
   gAfter(1300 + Math.random() * 2600, function(){
     if(G.phase !== 'choose') return;
     if(G.mode === 'poker'){ var u = gUnused(G.ta, G.taUsed); G.taIdx = u[Math.floor(Math.random() * u.length)]; } else G.taRps = Math.floor(Math.random() * 3);
@@ -11168,7 +11348,7 @@ function gReveal(){
 function gSpeakPhase(winner){
   var c = gcfg(), wait = Math.max(3, Math.round(c.speakWait));
   G.phase = 'speak'; G.spoken = false;
-  G.msg = (winner === 'me' ? '你赢了' : rugTaName() + ' 赢了') + '！' + (G.loser === 'me' ? '你' : rugTaName()) + ' 要对' + (winner === 'me' ? rugTaName() : '你') + '说一句恭维的话';
+  G.msg = (winner === 'me' ? '你赢了' : rugTaName() + ' 赢了') + '！' + (G.loser === 'me' ? '你' : rugTaName()) + ' 要对' + (winner === 'me' ? '你' : rugTaName()) + '说一句恭维的话';
   gCountdown(wait, renderGame, function(){ gSay(); });
   if(G.loser === 'ta') gAfter(Math.max(1800, wait * 1000 * (0.35 + Math.random() * 0.35)), function(){ gSay(); });
 }
@@ -11198,18 +11378,8 @@ function gCardNode(c, o){
   return el;
 }
 function renderGame(){
-  var table = $('#gTable'), seg = $('#gSeg'); if(!table) return;
+  var table = $('#gTable'); if(!table || !G.open) return;
   var ta = rugTaName();
-  seg.innerHTML = '';
-  [['poker', '纸牌比大小'], ['rps', '石头剪刀布']].forEach(function(p){
-    var b = document.createElement('button'); b.type = 'button'; b.className = 'st-tab' + (G.mode === p[0] ? ' on' : ''); b.textContent = p[1];
-    b.onclick = function(){
-      if(G.mode === p[0]) return;
-      if(G.phase !== 'lobby' && G.phase !== 'over'){ toast('先结束当前这一局再切换'); return; }
-      gClear(); G.mode = p[0]; G.phase = 'lobby'; G.round = 0; G.score = { me: 0, ta: 0 }; G.msg = ''; renderGame();
-    };
-    seg.appendChild(b);
-  });
   table.innerHTML = '';
   var top = document.createElement('div'); top.className = 'g-top';
   top.innerHTML = '<span></span><b></b><span></span>';
@@ -11218,15 +11388,6 @@ function renderGame(){
   var acts = document.createElement('div'); acts.className = 'g-acts';
   function btn(t, cls, fn, dis){ var b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = t; if(dis) b.disabled = true; else b.onclick = fn; acts.appendChild(b); }
   function msgNode(txt, big){ var m = document.createElement('div'); m.className = 'g-msg' + (big ? ' big' : ''); m.textContent = txt; return m; }
-  if(G.phase === 'lobby' || G.phase === 'inviting'){
-    var hero = document.createElement('div'); hero.className = 'g-hero';
-    hero.innerHTML = '<div class="g-hero-ic">🃏</div>';
-    hero.appendChild(msgNode(G.phase === 'lobby' ? ('先邀请 ' + ta + ' 一起玩，TA 同意后才会入座开局。' + (G.mode === 'poker' ? '每轮各发 6 张牌，双方自己选一张出战比大小，输的人要说一句恭维的话。' : '双方同时出拳，输的人要说一句恭维的话。')) : G.msg));
-    if(G.phase === 'inviting'){ var cn = document.createElement('div'); cn.className = 'g-count'; cn.textContent = G.count; hero.appendChild(cn); }
-    table.appendChild(hero);
-    if(G.phase === 'lobby') btn('邀请 ' + ta + ' 一起玩', 'primary-btn', gInvite); else btn('等待回应…', 'primary-btn', null, true);
-    table.appendChild(acts); return;
-  }
   var away = ['locked', 'count', 'reveal', 'speak'].indexOf(G.phase) >= 0;
   var showPair = away || G.phase === 'next' && G.speech.length;
   var revealed = ['reveal', 'speak', 'next', 'over'].indexOf(G.phase) >= 0;
@@ -11274,22 +11435,20 @@ function renderGame(){
     table.appendChild(mid2);
   }
   // 操作区
-  if(G.phase === 'seated') btn('准备', 'primary-btn', gReady);
-  if(G.phase === 'ready') btn('已准备，等待 ' + ta + '…', 'primary-btn', null, true);
   if(G.phase === 'choose' && G.mode === 'rps' && G.myRps < 0) RPS.forEach(function(r, i){ btn(r[0] + ' ' + r[1], 'g-rps-btn', function(){ gRpsPick(i); }); });
   if(G.phase === 'speak' && G.loser === 'me' && !G.spoken) btn('说出认输的话', 'primary-btn', gSay);
   if(G.phase === 'next' && G.endAsk){ btn('同意结束', 'g-rps-btn', gEnd); btn('再来一轮', 'primary-btn', function(){ G.endAsk = false; renderGame(); }); }
-  if(G.phase === 'over'){ btn('再来一局', 'primary-btn', function(){ gSeat(); renderGame(); }); btn('回到大厅', 'g-rps-btn', function(){ gClear(); G.phase = 'lobby'; G.round = 0; G.score = { me: 0, ta: 0 }; G.msg = ''; renderGame(); }); }
-  if(['ready', 'choose', 'locked', 'count', 'reveal', 'speak', 'next', 'dealing'].indexOf(G.phase) >= 0) btn('结束本局', 'g-rps-btn', gEnd);
+  if(G.phase === 'over'){ btn('再来一局', 'primary-btn', function(){ gStartGame(G.mode); }); btn('关闭小窗', 'g-rps-btn', gCloseBox); }
+  if(['choose', 'locked', 'count', 'reveal', 'speak', 'next', 'dealing'].indexOf(G.phase) >= 0) btn('结束本局', 'g-rps-btn', gEnd);
   table.appendChild(acts);
 }
 function renderGameCfg(){
-  var c = gcfg(), ids = [['gAccMin', 'acceptMin'], ['gAccMax', 'acceptMax'], ['gSpeak', 'speakWait'], ['gNext', 'nextSec']];
+  var c = gcfg(), ids = [['gAccMin', 'acceptMin'], ['gAccMax', 'acceptMax'], ['gAccP', 'acceptP'], ['gSpeak', 'speakWait'], ['gNext', 'nextSec']];
   ids.forEach(function(p){
     var el = $('#' + p[0]); if(!el) return;
     el.value = c[p[1]];
     el.onchange = function(){
-      var cur = gcfg(); var v = parseInt(el.value, 10); if(isNaN(v) || v < 0) v = c[p[1]]; v = Math.min(120, v);
+      var cur = gcfg(); var v = parseInt(el.value, 10); if(isNaN(v) || v < 0) v = c[p[1]]; v = Math.min(p[1] === 'acceptP' ? 100 : 120, v);
       cur[p[1]] = v; if(cur.acceptMax < cur.acceptMin){ if(p[1] === 'acceptMin') cur.acceptMax = cur.acceptMin; else cur.acceptMin = cur.acceptMax; }
       try { localStorage.setItem('mj.gameCfg', JSON.stringify(cur)); } catch(e){}
       renderGameCfg();
@@ -11339,6 +11498,19 @@ var LOTS_ZODIAC = [['白羊座','3.21 – 4.19','♈'],['金牛座','4.20 – 5.
 var LOTS_ANIMAL = [['鼠','子','🐭'],['牛','丑','🐮'],['虎','寅','🐯'],['兔','卯','🐰'],['龙','辰','🐲'],['蛇','巳','🐍'],['马','午','🐴'],['羊','未','🐑'],['猴','申','🐵'],['鸡','酉','🐔'],['狗','戌','🐶'],['猪','亥','🐷']];
 var LOTS_MBTI = [['INTJ','建筑师'],['INTP','逻辑学家'],['ENTJ','指挥官'],['ENTP','辩论家'],['INFJ','提倡者'],['INFP','调停者'],['ENFJ','主人公'],['ENFP','竞选者'],['ISTJ','物流师'],['ISFJ','守护者'],['ESTJ','总经理'],['ESFJ','执政官'],['ISTP','鉴赏家'],['ISFP','探险家'],['ESTP','企业家'],['ESFP','表演者']];
 var LOTS_STATUS_DEF = ["情绪|非常累", "情绪|情绪比较敏感", "情绪|伤心", "情绪|想到过去的一些伤心事", "情绪|想起了之前的一些事情", "情绪|不想讲话", "情绪|不想动", "情绪|不敢", "情绪|不知道该怎么办", "情绪|心里堵得慌", "情绪|莫名想哭，又哭不出来", "情绪|一点小事就容易多想", "情绪|表面没事，其实一直在硬撑", "情绪|突然很想被抱一下", "情绪|有点委屈，但不知道跟谁说", "情绪|压着火，没有发出来", "情绪|容易被一句话戳到", "情绪|最近容易走神发呆", "情绪|心情像过山车，起伏很快", "情绪|对什么都提不起劲", "处境|责任重", "处境|熬夜", "处境|周围环境比较暗", "处境|支出比较大", "处境|权衡利弊", "处境|选择", "处境|等待某件事情的到来", "处境|一件比较突然的事情或者事情比较激烈", "处境|通知", "处境|家庭出现一些问题", "处境|最近事情多，每天都在赶", "处境|有一件事一直悬着没有定下来", "处境|手头有点紧，在算着花钱", "处境|换了新的环境，还在适应", "处境|被人拜托了一件不好推的事", "处境|最近在考虑要不要换个方向", "处境|有一个决定拖了很久", "处境|临近一个期限，心里发紧", "关系|和父母或者说是家人之间交流不是特别愉快", "关系|贴贴亲亲", "关系|独处", "关系|小动物", "关系|教师老师", "关系|耍小聪明", "关系|和某个人之间有点僵", "关系|很想联系一个人，又迟迟没发", "关系|被人冷落了一下，嘴上说没事", "关系|有人在默默关心着", "关系|和朋友聊到很晚", "关系|最近话少，只想一个人待着", "关系|有一个很久没见的人突然冒出来", "思绪|思考", "思绪|自我反省", "思绪|通透", "思绪|直觉准", "思绪|做梦", "思绪|做了很清楚的梦，醒来还记得", "思绪|总觉得有什么事要发生", "思绪|反复回想某一句话", "思绪|脑子停不下来，越晚越清醒", "思绪|突然想通了一件拧巴很久的事", "玄学|接触过神秘学", "玄学|有接触过神秘学的", "玄学|泡澡或者周围有水", "玄学|最近总看到重复的数字", "玄学|对某个地方、某个人有莫名的熟悉感", "玄学|睡前会想起一些很久没想的人", "玄学|梦里出现了水或者下雨", "玄学|最近特别在意预兆和巧合", "身体|胃口变了，一会儿没胃口一会儿很能吃", "身体|肩颈很僵，抬头都酸", "身体|手脚冰凉，怎么都暖不热", "身体|眼睛干涩，看屏幕久了就疼", "身体|睡眠很浅，一点动静就醒", "身体|生理期前后情绪和身体都比较敏感", "身体|头有点疼，一阵一阵的", "习惯|最近突然很爱吃甜的东西，以前不碰的蛋糕、布丁、巧克力，现在看到就有点走不动路。", "习惯|喝饮料开始偏好带气泡的，冰镇的气泡水或者带汽的果饮，觉得喝完整个人都顺了。", "习惯|睡觉前总是觉得饿，明明晚饭吃饱了，躺下没多久又想去翻冰箱找点零食。", "习惯|最近皮肤状态不太稳定，容易冒小痘痘或者干燥起皮，照镜子的时候会有点烦躁。", "习惯|白天总犯困，下午必须靠咖啡或浓茶撑着，但到了晚上又舍不得睡，一直刷手机。", "习惯|对天气变化特别敏感，一降温或者下雨就浑身懒懒的，不想出门不想动。", "习惯|最近总是半夜才有精神，白天起不来，作息已经乱到自己都不想管了。", "习惯|开始偏爱热的、软的东西，粥、汤、热牛奶，吃凉的反而不舒服。", "习惯|买东西变得有点冲动，下单的时候很爽，收到之后又觉得没那么需要。", "习惯|总是把手机拿起来又放下，点开聊天框又退出去，什么也没发。", "习惯|最近特别想买点小东西犒劳自己，不贵，但一定要是自己喜欢的。", "习惯|出门前会反复检查门有没有锁、东西有没有带，检查完还是不放心。", "习惯|最近很爱听同一首歌，单曲循环一整天也不腻。", "习惯|晚上洗完澡就想立刻躺平，什么都不想做，连头发都懒得吹干。", "习惯|对气味变得很敏感，闻到某种香味会突然想起一个人或者一段时间。", "习惯|最近开始整理东西，翻到旧的东西就停下来看半天，一整个下午就过去了。", "习惯|吃饭变得很随便，一碗面、一个面包就解决，懒得为自己认真做一顿。", "习惯|很容易被小动物吸引，路上看到猫或狗会停下来看很久，忍不住想靠近。", "习惯|开始早睡早起，但其实躺在床上也是睡不着，只是想让自己看起来有规律。", "习惯|喜欢待在有水声或者有雨声的地方，泡澡、淋浴的时间比平时长很多。"];
+var LOTS_FIRST = '石家庄,太原,呼和浩特,沈阳,长春,哈尔滨,南京,杭州,合肥,福州,南昌,济南,郑州,武汉,长沙,广州,南宁,海口,成都,贵阳,昆明,拉萨,西安,兰州,西宁,银川,乌鲁木齐'.split(',');
+var LOTS_TREE = null;
+function lotsRegionTree(){
+  if(LOTS_TREE) return LOTS_TREE;
+  var provs = LOTS_REG.slice(0, 31), tree = {}, wc = [], cur = -1;
+  provs.forEach(function(p){ tree[p] = []; if(!/^(北京|天津|上海|重庆)市$/.test(p)) wc.push(p); });
+  for(var i = 31; i < LOTS_REG.length; i++){
+    var n = LOTS_REG[i];
+    if(cur + 1 < LOTS_FIRST.length && n.replace(/市$/, '') === LOTS_FIRST[cur + 1]) cur++;
+    if(cur >= 0) tree[wc[cur]].push(n);
+  }
+  LOTS_TREE = tree; return tree;
+}
 var LOTS_KEY = 'mj.lots.v1';
 var LOTS = null, LOTS_LAST = {};
 function lotsDefaults(){ return { counts: { region: 1, zodiac: 1, animal: 1, mbti: 1, letter: 2, status: 3, number: 1 }, num: { min: 1, max: 100 }, dupLetter: false, status: null, custom: [] }; }
@@ -11390,7 +11562,10 @@ function lotsPool(z){
 function lotsShuffle(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
 function lotsDrawZone(z){
   var cards = [], hint = '';
-  if(z.kind === 'number'){
+  if(z.kind === 'region'){
+    var tr = lotsRegionTree(), pv = lotsShuffle(Object.keys(tr)).slice(0, Math.min(z.count, 31));
+    cards = pv.map(function(p){ var cs = tr[p]; return cs.length ? { t: cs[Math.floor(Math.random() * cs.length)], top: p } : { t: p, top: '直辖市' }; });
+  } else if(z.kind === 'number'){
     var mn = LOTS.num.min, mx = LOTS.num.max, span = mx - mn + 1, k = Math.min(z.count, span), seen = {};
     while(cards.length < k){ var n = mn + Math.floor(Math.random() * span); if(!seen[n]){ seen[n] = 1; cards.push({ t: String(n), g: '数字', big: true }); } }
     if(k < z.count) hint = '范围内只有 ' + k + ' 个数，本次抽出 ' + k + ' 个';
@@ -11428,6 +11603,7 @@ function lotsRenderCards(zid, instant){
     var bk = document.createElement('div'); bk.className = 'lt-face lt-bk'; bk.innerHTML = '<span>✦</span>';
     var ft = document.createElement('div'); ft.className = 'lt-face lt-ft';
     if(c.e){ var em = document.createElement('div'); em.className = 'lt-em'; em.textContent = c.e; ft.appendChild(em); }
+    if(c.top){ var tp = document.createElement('div'); tp.className = 'lt-topline'; tp.textContent = c.top; ft.appendChild(tp); }
     var tx = document.createElement('div'); tx.className = 'lt-tx' + (c.big ? ' big' : '') + (c.t.length > 14 ? ' long' : ''); tx.textContent = c.t; ft.appendChild(tx);
     if(c.g){ var bd = document.createElement('div'); bd.className = 'lt-bd'; bd.textContent = c.g; ft.appendChild(bd); }
     inner.appendChild(bk); inner.appendChild(ft); el.appendChild(inner); box.appendChild(el);
@@ -11448,7 +11624,7 @@ function lotsRender(){
     var h = document.createElement('h3'); h.textContent = z.name;
     var meta = document.createElement('div'); meta.className = 'lt-meta';
     var pool = lotsPool(z);
-    meta.textContent = z.kind === 'number' ? ('范围 ' + LOTS.num.min + ' – ' + LOTS.num.max + ' · 一次抽 ' + z.count + ' 个') : ('卡池 ' + (z.kind === 'letter' && LOTS.dupLetter ? 26 : pool.length) + ' 项 · 一次抽 ' + z.count + ' 张');
+    meta.textContent = z.kind === 'region' ? ('每次抽「省 + 市」· 一次抽 ' + z.count + ' 组') : z.kind === 'number' ? ('范围 ' + LOTS.num.min + ' – ' + LOTS.num.max + ' · 一次抽 ' + z.count + ' 个') : ('卡池 ' + (z.kind === 'letter' && LOTS.dupLetter ? 26 : pool.length) + ' 项 · 一次抽 ' + z.count + ' 张');
     l.appendChild(eb); l.appendChild(h); l.appendChild(meta);
     var act = document.createElement('div'); act.className = 'lt-act';
     var b1 = document.createElement('button'); b1.type = 'button'; b1.className = 'lt-btn pri'; b1.textContent = '抽一抽';
