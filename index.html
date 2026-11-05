@@ -2781,8 +2781,8 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
       <section class="panel">
         <h3>分别抽多少张</h3>
         <div class="set-grid">
-          <label>TA 回我消息最少<input type="number" id="drawDailyMin" min="1" max="10" step="1" inputmode="numeric"></label>
-          <label>TA 回我消息最多<input type="number" id="drawDailyMax" min="1" max="10" step="1" inputmode="numeric"></label>
+          <label>TA 一轮回我最少（条）<input type="number" id="drawDailyMin" min="1" max="10" step="1" inputmode="numeric"></label>
+          <label>TA 一轮回我最多（条）<input type="number" id="drawDailyMax" min="1" max="10" step="1" inputmode="numeric"></label>
         </div>
         <div class="set-grid">
           <label>TA 回信最少<input type="number" id="letterMin" min="0" max="20" step="1" inputmode="numeric"></label>
@@ -2792,7 +2792,7 @@ body[data-avb="on"][data-avg="on"] .avatar{box-shadow:0 0 0 2px var(--avb-color)
           <label>TA 主动发消息最少<input type="number" id="drawProMin" min="1" max="10" step="1" inputmode="numeric"></label>
           <label>TA 主动发消息最多<input type="number" id="drawProMax" min="1" max="10" step="1" inputmode="numeric"></label>
         </div>
-        <p class="note" style="margin-top:10px">三处各抽各的，互不串：日常回消息、回信、主动发消息。信里只显示是从哪儿抽的（只读），要改来这里改。</p>
+        <p class="note" style="margin-top:10px">三处各抽各的，互不串：日常回消息、回信、主动发消息。「一轮回我」指你连发几条也算一轮，TA 这一轮回几条在最少—最多之间随机；你中途又发消息，还没发出的回复会并进同一轮，不会越推越后。信里只显示是从哪儿抽的（只读），要改来这里改。</p>
       </section>
     </div>
   </div>
@@ -4937,20 +4937,34 @@ function ensureReplies(){
   if(!ids.length) return 0;
   state.unanswered = [];
   var nowE = Date.now();
-  var lastMsgE = state.messages.filter(function(x){ return x.id === ids[ids.length - 1]; })[0];
+  var byId = function(mid){ return state.messages.filter(function(x){ return x.id === mid; })[0]; };
+  var lastMsgE = byId(ids[ids.length - 1]);
   var baseE = lastMsgE && lastMsgE.ts ? lastMsgE.ts : nowE;
-  // 回复在「发出消息后 最短~最长」之内到达（含「正在输入」那一小段），而不是等到已读之后再另起一段计时
+  // 你连发的一串话算「一轮」：TA 这一轮回几条，由「回我消息最少/最多」决定（不是每条消息各回一轮）
+  var d = drawCfg();
+  var lo = Math.max(1, parseInt(d.dailyMin, 10) || 1), hi = Math.max(lo, parseInt(d.dailyMax, 10) || lo);
+  var K = lo + Math.floor(Math.random() * (hi - lo + 1));
+  // 上一轮还没说完的回复照常发完；新的一轮只补「还差的条数」，这样不管你中途发多少次，积压都不会超过「最多」条
+  var pend = state.pendingActions.filter(function(x){ return x.t === 'reply' && !x.urge; });
+  var lastDue = 0; pend.forEach(function(x){ if(x.dueAt > lastDue) lastDue = x.dueAt; });
+  K = Math.max(1, K - pend.length);
+  // 第一条在「发出后 最短~最长」窗口内到达（含「正在输入」那一小段），后面几条紧接着
   var t = Math.max(nowE + 500, baseE + randReplyDelay() - 2300);
+  if(lastDue) t = Math.max(t, lastDue + 1500 + Math.random() * 2000);
+  var firstT = t;
+  for(var i = 0; i < K; i++){
+    var trig = ids[Math.min(ids.length - 1, Math.floor(i * ids.length / K))];
+    enqueue({ t: 'reply', replyTo: trig, dueAt: t });
+    t += 1500 + Math.random() * 2500;
+  }
   ids.forEach(function(mid){
-    enqueue({ t: 'reply', replyTo: mid, dueAt: t });
-    var mm = state.messages.filter(function(x){ return x.id === mid; })[0];
-    if(mm && mm.rd && mm.ts + mm.rd > t - 1300){
-      mm.rd = Math.max(500, Math.floor((t - 1300 - mm.ts) * (0.35 + Math.random() * 0.4)));
+    var mm = byId(mid);
+    if(mm && mm.rd && mm.ts + mm.rd > firstT - 1300){
+      mm.rd = Math.max(500, Math.floor((firstT - 1300 - mm.ts) * (0.35 + Math.random() * 0.4)));
     }
-    t += 1500 + Math.random() * 3000;
   });
   save();
-  return ids.length;
+  return K;
 }
 function deliverTaAct(a){
   if(a.kind === 'sticker'){
@@ -7541,8 +7555,8 @@ function buildQuestionBlock(sv, q){
   tin.type = 'text'; tin.className = 'q-input';
   tin.maxLength = 60; tin.value = q.text || '';
   tin.placeholder = '问题，比如：今天想我了吗';
-  tin.maxLength = 30;
-  tin.oninput = function(){ q.text = tin.value.slice(0, 30); save(); };
+  tin.maxLength = 100;
+  tin.oninput = function(){ q.text = tin.value.slice(0, 100); save(); };
   var delQ = document.createElement('button');
   delQ.className = 'mini danger';
   delQ.textContent = '删题';
